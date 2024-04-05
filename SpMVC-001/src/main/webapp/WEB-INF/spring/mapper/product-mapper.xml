@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <!-- pakage 주소.인터페이스 이름 -->
+ <mapper namespace="com.callor.hello.persistance.ProductDao"> 
+ 
+
+ 	<!-- 코드는 업데이터x -->
+ 	<insert id="insert" parameterType="ProductVO">
+ 		INSERT INTO tbl_product (p_code, p_name, p_item, p_price)
+		VALUE(#{p_code},#{p_name},#{p_item},#{p_price})
+	</insert>
+ 
+ </mapper> 
+

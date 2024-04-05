@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <!-- pakage 주소.인터페이스 이름 -->
+ <mapper namespace="com.callor.hello.persistance.CustomDao"> 
+ 
+ 	<insert id="insert" parameterType="CustomVO">
+ 		INSERT INTO tbl_customer (c_code, c_name,c_tel)
+		VALUE(#{c_code},#{c_name},#{c_tel})
+	</insert>
+ 	<!-- 코드는 업데이터x -->
+ 	<update id="update">
+ 		UPDATE tbl_customer
+ 		SET c_name = #{c_name}, c_tel = #{c_tel}
+ 		WHERE c_code = #{c_code}
+ 	</update>
+ 
+ </mapper> 
