@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.callor.hello.dao.NemoDao">
+
+	<select id="selectAll"></select>
+	<select id="findById"></select>
+	<insert id="insert">
+		INSERT INTO tbl_nemo_play(
+		p_id,
+		p_num,p_row_num,p_block1,p_block2,p_block3,p_block4,
+		p_block5,p_block6,p_block7,p_block8,p_block9,p_block10,p_block11,p_block12,p_block13,
+		p_block14,p_block15
+		)VALUES ( #{p_id}, #{p_num}, #{p_row_num},
+		#{p_block1}, #{p_block2}, #{p_block3}, #{p_block4},
+		#{p_block5}, #{p_block6}, #{p_block7}, #{p_block8}, #{p_block9}, #{p_block10},
+		#{p_block11, #{p_block12}, #{p_block13},
+		#{p_block14}, #{p_block15}
+		)
+
+	</insert>
+	<update id="update"></update>
+	<delete id="delete"></delete>
+
+</mapper> 

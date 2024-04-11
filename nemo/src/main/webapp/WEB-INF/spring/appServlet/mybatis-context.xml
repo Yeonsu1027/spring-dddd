@@ -17,7 +17,7 @@
 		<property name="username" value="root" />
 		<property name="password" value="!Biz8080" />
 		<property name="url"
-			value="jdbc:mysql://localhost:3306/userdb" />
+			value="jdbc:mysql://localhost:3306/nemodb" />
 	</bean>
 	<!-- sqlSessionfactory : MyBatis 를 사용하여 JavaCode 와 dataSource 를 연결하는 방법 -->
 
@@ -36,6 +36,6 @@
 	<mybatis-spring:scan base-package="com.callor.hello.dao"/>
 	
 	<!-- 이 패키지에 있는 인터페이스들을 스캔해 -->
-	<mybatis-spring:scan base-package="com.callor.hello.persistance"/>
+	<!-- <mybatis-spring:scan base-package="com.callor.hello.persistance"/> -->
 
 </beans>
