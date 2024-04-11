@@ -9,10 +9,13 @@
   <body>
     <h1>Hello!! Korea</h1>
     <h2>The time on the Today is ${serverTime}</h2>
-    <h3>
-    	<!-- Auth~ 의 vo에 담긴 -->
-    	<sec:authentication property="principal.username"/>
-    	<sec:authentication property="principal.email"/>
-    </h3>
+    
+    	<!-- Auth~ 의 vo에 담긴, sec:authorize access="isAuthenticated()
+    	로그인 했을때만 보여주고 아님말고(오류안나게)
+    	-->
+    	<sec:authorize access="isAuthenticated()">
+	    	<h3><sec:authentication property="principal.username"/></h3>
+	    	<h3><sec:authentication property="principal.email"/></h3>
+    	</sec:authorize>
   </body>
 </html>

@@ -46,7 +46,7 @@ public class AuthProviderImpl implements AuthenticationProvider{
 			 * 바깥쪽의 method 에 메시지를 전달하고 싶을때
 			 * 강제로(일부러) exception 을 발생하여 전달하는 방법
 			 * */
-			throw new UsernameNotFoundException("USERNAME 없음"); // 익셉션 강제발생
+			throw new UsernameNotFoundException("USERNAME 없음"); // 익셉션 강제발생 // 화면에 ""에 적은 메시지나옴
 		}
 		
 		if(password == null || password.isBlank() || !password.equals("12345")) {
