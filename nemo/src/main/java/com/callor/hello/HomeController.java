@@ -1,31 +1,58 @@
 package com.callor.hello;
 
-import java.text.DateFormat;
-import java.util.Date;
 import java.util.Locale;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
-/**
- * Handles requests for the application home page.
- */
+import com.callor.hello.dao.NemoDao;
+import com.callor.hello.model.NemoVO;
+
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @Controller
 public class HomeController {
-	
-	
-	/**
-	 * Simply selects the home view to render by returning its name.
-	 */
+
+	private final NemoDao nemoDao;
+
+	public HomeController(NemoDao nemoDao) {
+		this.nemoDao = nemoDao;
+	}
+
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
-
-		
 		return "home";
 	}
-	
-	
-	
+
+	@RequestMapping(value = "/", method = RequestMethod.POST)
+	public String save(@RequestParam(value = "p_block1", required = false) Integer block1,
+			@RequestParam(value = "p_block2", required = false) Integer block2,
+			@RequestParam(value = "p_block3", required = false) Integer block3,
+			@RequestParam(value = "p_block4", required = false) Integer block4,
+			@RequestParam(value = "p_block5", required = false) Integer block5, Model model,NemoVO nemoVO) {
+
+		nemoVO.setP_id("USER1");
+		nemoVO.setN_num(1);
+		nemoVO.setN_row_num(1); // 행번호..
+
+		// 체크박스의 값이 전송되지 않으면 자동으로 0으로 설정
+		nemoVO.setN_block1(block1 != null ? block1 : 0);
+		nemoVO.setN_block2(block2 != null ? block2 : 0);
+		nemoVO.setN_block3(block3 != null ? block3 : 0);
+		nemoVO.setN_block4(block4 != null ? block4 : 0);
+		nemoVO.setN_block5(block5 != null ? block5 : 0);
+
+		nemoDao.insert(nemoVO);
+
+		log.debug(nemoVO.toString());
+		
+		
+		// 데이터베이스에 저장
+		return "redirect:/hello";
+	}
 }
