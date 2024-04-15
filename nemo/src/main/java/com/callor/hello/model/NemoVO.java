@@ -16,21 +16,21 @@ import lombok.ToString;
 public class NemoVO {
 
 	private String p_id;
-	private Integer n_num; 
-	private Integer n_row_num ;
-	private Integer n_block1;
-	private Integer n_block2 ;
-	private Integer n_block3 ;
-	private Integer n_block4 ;
-	private Integer n_block5 ;
-	private Integer n_block6 ;
-	private Integer n_block7 ;
-	private Integer n_block8 ;
-	private Integer n_block9 ;
-	private Integer n_block10 ;
-	private Integer n_block11 ;
-	private Integer n_block12 ;
-	private Integer n_block13 ;
-	private Integer n_block14 ;
-	private Integer n_block15 ;
+	private Integer p_num; 
+	private Integer p_row_num ;
+	private Integer p_block1;
+	private Integer p_block2 ;
+	private Integer p_block3 ;
+	private Integer p_block4 ;
+	private Integer p_block5 ;
+	private Integer p_block6 ;
+	private Integer p_block7 ;
+	private Integer p_block8 ;
+	private Integer p_block9 ;
+	private Integer p_block10 ;
+	private Integer p_block11 ;
+	private Integer p_block12 ;
+	private Integer p_block13 ;
+	private Integer p_block14 ;
+	private Integer p_block15 ;
 }

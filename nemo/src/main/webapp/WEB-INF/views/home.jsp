@@ -30,7 +30,7 @@ div.row {
 </style>
 </head>
 <body>
-    <form>
+    <form action="/hello">
     	<div class="row">
  			<input class="nemo" type="checkbox" name="p_block1" value="1"/>
  			<input class="nemo" type="checkbox" name="p_block2" value="1"/>

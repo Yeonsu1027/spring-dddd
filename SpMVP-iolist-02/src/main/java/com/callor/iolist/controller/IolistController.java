@@ -145,6 +145,7 @@ public class IolistController {
 		return "redirect:/iolist";
 	}
 
+//	 SearchDto의 새 인스턴스를 반환하며, 이는 "SEARCH"라는 이름으로 모델에 추가
 	@ModelAttribute("SEARCH")
 	private SearchDto searchDto() {
 		return new SearchDto();

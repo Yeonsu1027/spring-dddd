@@ -30,29 +30,30 @@ public class HomeController {
 	}
 
 	@RequestMapping(value = "/", method = RequestMethod.POST)
-	public String save(@RequestParam(value = "p_block1", required = false) Integer block1,
+	public String home(
+			@RequestParam(value = "p_block1", required = false) Integer block1,
 			@RequestParam(value = "p_block2", required = false) Integer block2,
 			@RequestParam(value = "p_block3", required = false) Integer block3,
 			@RequestParam(value = "p_block4", required = false) Integer block4,
 			@RequestParam(value = "p_block5", required = false) Integer block5, Model model,NemoVO nemoVO) {
 
-		nemoVO.setP_id("USER1");
-		nemoVO.setN_num(1);
-		nemoVO.setN_row_num(1); // 행번호..
+		// 임시적용
+		nemoVO.setP_id("USER1"); // 아이디
+		nemoVO.setP_num(1); //그림번호
+		nemoVO.setP_row_num(1); // 행번호..
 
 		// 체크박스의 값이 전송되지 않으면 자동으로 0으로 설정
-		nemoVO.setN_block1(block1 != null ? block1 : 0);
-		nemoVO.setN_block2(block2 != null ? block2 : 0);
-		nemoVO.setN_block3(block3 != null ? block3 : 0);
-		nemoVO.setN_block4(block4 != null ? block4 : 0);
-		nemoVO.setN_block5(block5 != null ? block5 : 0);
+		nemoVO.setP_block1(block1 != null ? block1 : 0);
+		nemoVO.setP_block2(block2 != null ? block2 : 0);
+		nemoVO.setP_block3(block3 != null ? block3 : 0);
+		nemoVO.setP_block4(block4 != null ? block4 : 0);
+		nemoVO.setP_block5(block5 != null ? block5 : 0);
 
 		nemoDao.insert(nemoVO);
 
-		log.debug(nemoVO.toString());
+//		log.debug(nemoVO.toString());
+		log.debug("block1: {}, block2: {}, block3: {}, block4: {}, block5: {}", block1, block2, block3, block4, block5);
 		
-		
-		// 데이터베이스에 저장
 		return "redirect:/hello";
 	}
 }
