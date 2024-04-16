@@ -24,21 +24,24 @@ div.row {
     background-color: black;
 }
 
-.row {
-    display: flex;
+.hidden {
+    display: none;
 }
+
 </style>
 </head>
 <body>
-    <form action="/hello">
-    	<div class="row">
- 			<input class="nemo" type="checkbox" name="p_block1" value="1"/>
- 			<input class="nemo" type="checkbox" name="p_block2" value="1"/>
- 			<input class="nemo" type="checkbox" name="p_block3" value="1"/>
- 			<input class="nemo" type="checkbox" name="p_block4" value="1"/>
- 			<input class="nemo" type="checkbox" name="p_block5" value="1"/>
- 		</div>	
-        <button type="submit">저장</button>
-    </form>
+	<form action="/hello" method="post">
+	    <div class="row row1">
+	        <input class="nemo" type="checkbox" name="p_block1" id="1" value="1"/>
+	        <input class="nemo" type="checkbox" name="p_block2" id="2" value="1"/>
+	        <input class="nemo" type="checkbox" name="p_block3" id="3" value="1"/>
+	        <input class="nemo" type="checkbox" name="p_block4" id="4" value="1"/>
+	        <input class="nemo" type="checkbox" name="p_block5" id="5" value="1"/>
+	        <input class="hidden" name="p_num" value="1"/>
+	        <input class="hidden" name="p_row_num" value="1"/>
+	        <button type="submit">저장</button>
+		   </div>
+	</form>
 </body>
 </html>

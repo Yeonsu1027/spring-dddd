@@ -9,6 +9,4 @@ public interface NemoDao {
 	public List<NemoVO> selectAll();
 	
 	public int insert(NemoVO vo);
-	
-	public int update(NemoVO vo);
 }

@@ -5,20 +5,18 @@
 
 <!-- 리스트만큼 반복해서만들어짐 -->
 <mapper namespace="com.callor.hello.dao.RoleDao">
-<!-- 
-List type 의 변수를 받아서
-foreach 를 사용하여 다음과 같은 SQL 을 생성한다
-INSERT INTO tbl_rols(r_username, r_role)
-VALUES('callor','ADMIN'), ('callor','ROLE_USER')
- -->
+	<!-- List type 의 변수를 받아서 foreach 를 사용하여 다음과 같은 SQL 을 생성한다 INSERT INTO tbl_rols(r_username, 
+		r_role) VALUES('callor','ADMIN'), ('callor','ROLE_USER') -->
 
+	<!-- separator : 구분자 반복될때 ,찍고 마지막엔 안찍힘(sql문 오류방지) -->
 	<insert id="insertAll">
-		INSERT INTO tbl_roles(r_username, r_role)
+		INSERT INTO tbl_rols(r_username, r_role)
 		VALUES
-		<foreach collection="LIST" item="vo">
-			(#{vo.r_username}, #{vo.r_role}),
+		<foreach collection="list" item="vo" separator=", ">
+			(#{vo.r_username}, #{vo.r_role})
 		</foreach>
 	</insert>
+
 	<update id="update"></update>
 	<delete id="delete"></delete>
 

@@ -5,9 +5,7 @@
 
 <mapper namespace="com.callor.hello.dao.NemoDao">
 
-	<select id="selectAll">
-		SELECT * FROM tbl_nemo_play
-	</select>
+	<select id="selectAll"></select>
 	<select id="findById"></select>
 	<insert id="insert">
 		INSERT INTO tbl_nemo_play(
@@ -23,19 +21,7 @@
 		)
 
 	</insert>
-	<update id="update">
-		    UPDATE tbl_nemo_play
-		    SET
-		        p_block1 = #{p_block1},
-		        p_block2 = #{p_block2},
-		        p_block3 = #{p_block3},
-		        p_block4 = #{p_block4},
-		        p_block5 = #{p_block5}
-		    WHERE
-		        p_id = #{p_id} AND
-		        p_num = #{p_num} AND
-		        p_row_num = #{p_row_num}
-	</update>
+	<update id="update"></update>
 	<delete id="delete"></delete>
 
 </mapper> 
