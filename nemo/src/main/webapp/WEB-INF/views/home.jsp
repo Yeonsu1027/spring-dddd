@@ -35,7 +35,7 @@ div.row {
 </style>
 </head>
 <body>
-	<h1>겜구현하기</h1>
+	<h1>1: 웃는얼굴</h1>
 	<c:forEach var="item" items="${answer}">
 		<div class="alist">
 		    <p>${item.n_block1}</p>
@@ -45,7 +45,7 @@ div.row {
 		    <p>${item.n_block5}</p>
 		</div>
 	</c:forEach>
-	<form action="/hello" method="post">
+	<form action="/hello/" method="post">
 	    <div class="row row1">
 	        <input class="nemo" type="checkbox" name="p_block1" id="1" value="1"/>
 	        <input class="nemo" type="checkbox" name="p_block2" id="2" value="1"/>
@@ -57,7 +57,7 @@ div.row {
 	        <button type="submit">저장</button>
 		   </div>
 	</form>
-	<form action="/hello" method="post">
+	<form action="/hello/" method="post">
 	    <div class="row row1">
 	        <input class="nemo" type="checkbox" name="p_block1" id="1" value="1"/>
 	        <input class="nemo" type="checkbox" name="p_block2" id="2" value="1"/>
@@ -69,7 +69,7 @@ div.row {
 	        <button type="submit">저장</button>
 		   </div>
 	</form>
-	<form action="/hello" method="post">
+	<form action="/hello/" method="post">
 	    <div class="row row1">
 	        <input class="nemo" type="checkbox" name="p_block1" id="1" value="1"/>
 	        <input class="nemo" type="checkbox" name="p_block2" id="2" value="1"/>
@@ -81,7 +81,7 @@ div.row {
 	        <button type="submit">저장</button>
 		   </div>
 	</form>
-	<form action="/hello" method="post">
+	<form action="/hello/" method="post">
 	    <div class="row row1">
 	        <input class="nemo" type="checkbox" name="p_block1" id="1" value="1"/>
 	        <input class="nemo" type="checkbox" name="p_block2" id="2" value="1"/>
@@ -93,7 +93,7 @@ div.row {
 	        <button type="submit">저장</button>
 		   </div>
 	</form>
-	<form action="/hello" method="post">
+	<form action="/hello/" method="post">
 	    <div class="row row1">
 	        <input class="nemo" type="checkbox" name="p_block1" id="1" value="1"/>
 	        <input class="nemo" type="checkbox" name="p_block2" id="2" value="1"/>

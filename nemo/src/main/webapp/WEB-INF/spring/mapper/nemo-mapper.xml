@@ -8,7 +8,11 @@
 	<select id="selectAll">
 		SELECT * FROM tbl_nemo_play
 	</select>
-	<select id="findById"></select>
+	<select id="findByRow">
+		SELECT *
+		FROM tbl_nemo_play
+		WHERE p_id = #{p_id} AND p_num = #{p_num} AND p_row_num = #{p_row_num}
+	</select>
 	<insert id="insert">
 		INSERT INTO tbl_nemo_play(
 		p_id,
@@ -21,8 +25,24 @@
 		#{p_block11}, #{p_block12}, #{p_block13},
 		#{p_block14}, #{p_block15}
 		)
-
 	</insert>
+	
+	<select id="findByRow_id">
+		SELECT p_id
+    	FROM tbl_nemo_play
+    	WHERE p_id = #{p_id} AND p_num = #{p_num} AND p_row_num = #{p_row_num}
+	</select>
+	<select id="findByRow_num">
+		SELECT p_num
+    	FROM tbl_nemo_play
+    	WHERE p_id = #{p_id} AND p_num = #{p_num} AND p_row_num = #{p_row_num}
+	</select>
+	<select id="findByRow_row_num">
+		SELECT p_row_num
+    	FROM tbl_nemo_play
+    	WHERE p_id = #{p_id} AND p_num = #{p_num} AND p_row_num = #{p_row_num}
+	</select>
+	
 	<update id="update">
 		    UPDATE tbl_nemo_play
 		    SET

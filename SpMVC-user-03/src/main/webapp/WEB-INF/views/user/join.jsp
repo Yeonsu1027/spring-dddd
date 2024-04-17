@@ -12,7 +12,7 @@
     <script>
     	const rootPath = "${rootPath}"
     </script>
-    <script src="${rootPath}/static/js/user.js?2024-04-16-001">
+    <script src="${rootPath}/static/js/user.js?2024-04-17-002">
     </script>
   </head>
   <body>
