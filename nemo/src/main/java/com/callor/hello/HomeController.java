@@ -35,8 +35,40 @@ public HomeController(NemoDao nemoDao, ANemoDao anemoDao) {
 //	}
 
 	@RequestMapping(value = {"/",""}, method = RequestMethod.GET)
-	public String home(Locale locale, Model model) {
+	public String home(Locale locale, Model model, NemoVO nemoVO) {
 		
+		// 주소에서 가져오는 대신 임시로 쓸 칸개수 번호 변수
+				// 나중에 난이도 별로 만들면 주소에 그림번호/칸개수번호/(n*n)를 넣고
+		int row = 5;
+		
+		
+	//----- ----게임을 시작하면 바로 테이블정보 생성..------------
+		// 맨처음 한 번 만 생성되어야 하니까 데이터 조회해서 if
+		// 데이터 조회로 변경해야함
+		boolean play_check = true;
+		
+		if(play_check) {
+			String userid = "USER1";
+			nemoVO.setP_id(userid); // 임시적용 아이디
+			nemoVO.setP_num(1); //나중에 그림번호 변수 만들어서 1자리에 집어넣기
+			nemoVO.setP_row_num(1);
+			
+			// block 0으로 세팅하는것도 그걸로 if문써서 난이도에 맞게 자동생성되게끔!
+			nemoVO.setP_block1(0);
+			nemoVO.setP_block2(0);
+			nemoVO.setP_block3(0);
+			nemoVO.setP_block4(0);
+			nemoVO.setP_block5(0);
+
+			for(int i =0; i<row ; i++ ) { 
+				nemoVO.setP_row_num(i+1); // 총5개
+				nemoDao.insert(nemoVO);
+			}
+			// 다시 생성안되게
+			play_check = false;
+		}// 자동생성 if문-------------------------------------------
+		
+
 		// db연결확인용 -> 잘뜸 db연결엔 이상없음..
 //		List<NemoVO> testlist = nemoDao.selectAll();
 //		model.addAttribute("test", testlist);
@@ -151,8 +183,20 @@ public HomeController(NemoDao nemoDao, ANemoDao anemoDao) {
 		// 아니면 완성버튼 누르면 비어있는행 생성
 		
 		
-		// 다 그렸다 누르면 정답테이블 불러와서 비교 후 점수매기기
+		// 다 그렸다 누르면 
+		// 정답테이블 불러와서 비교 후 점수매기기
+			// 정답테이블 조회하는 dao,매퍼 만들기(그림번호, 행번호) 집어넣어서
+			/* 행 데이터를 전부 불러오고, 마찬가지로 플레이어 게임정보 데이터도 전부 불러와서 findByRow로 한줄씩 다 가져와서 비교
+			 * 각각의 행데이터(block 의 값)을 비교해서 .. 점수변수를 하나 선언하고..
+			 * 다른게 있으면 ++ 해서 스테이지 점수 별같은거 조정
+			 * 
+			 * 다 맞췄으면 클리어 테이블에 데이터 생성 c_id, c_level, c_clear (유저아이디,그림번호,클리어(1))
+			 * 
+			 * 
+			 * */
 		
+		// 나중에 메인화면(스테이지 선택창)에서 이 클리어테이블 정보를 불러와서 없으면 ?같은 그림으로 보이게하고
+		// 클리어를 한 스테이지 이면 완성된 도트 이미지 보여주기
 		
 
 //		log.debug(nemoVO.toString());

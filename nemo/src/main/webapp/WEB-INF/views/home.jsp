@@ -14,7 +14,7 @@ div.row {
     height: 60px;
     border: 1px solid black;
     cursor: pointer;
-    margin: 5px;
+  	margin: -1px;
     -webkit-appearance: none; 
     -moz-appearance: none;
     appearance: none;
@@ -54,7 +54,7 @@ div.row {
 	        <input class="nemo" type="checkbox" name="p_block5" id="5" value="1"/>
 	        <input class="hidden" name="p_num" value="1"/>
 	        <input class="hidden" name="p_row_num" value="1"/>
-	        <button type="submit">저장</button>
+	        <button class="hidden" type="submit">저장</button>
 		   </div>
 	</form>
 	<form action="/hello/" method="post">
@@ -66,7 +66,7 @@ div.row {
 	        <input class="nemo" type="checkbox" name="p_block5" id="5" value="1"/>
 	        <input class="hidden" name="p_num" value="1"/>
 	        <input class="hidden" name="p_row_num" value="2"/>
-	        <button type="submit">저장</button>
+	        <button class="hidden" type="submit">저장</button>
 		   </div>
 	</form>
 	<form action="/hello/" method="post">
@@ -78,7 +78,7 @@ div.row {
 	        <input class="nemo" type="checkbox" name="p_block5" id="5" value="1"/>
 	        <input class="hidden" name="p_num" value="1"/>
 	        <input class="hidden" name="p_row_num" value="3"/>
-	        <button type="submit">저장</button>
+	        <button class="hidden" type="submit">저장</button>
 		   </div>
 	</form>
 	<form action="/hello/" method="post">
@@ -90,7 +90,7 @@ div.row {
 	        <input class="nemo" type="checkbox" name="p_block5" id="5" value="1"/>
 	        <input class="hidden" name="p_num" value="1"/>
 	        <input class="hidden" name="p_row_num" value="4"/>
-	        <button type="submit">저장</button>
+	        <button class="hidden" type="submit">저장</button>
 		   </div>
 	</form>
 	<form action="/hello/" method="post">
@@ -102,9 +102,31 @@ div.row {
 	        <input class="nemo" type="checkbox" name="p_block5" id="5" value="1"/>
 	        <input class="hidden" name="p_num" value="1"/>
 	        <input class="hidden" name="p_row_num" value="5"/>
-	        <button type="submit">저장</button>
+	        <button class="hidden" type="submit">저장</button>
 		   </div>
 	</form>
-	<button>다그렸다!</button>
+	<button class="">다그렸다!</button>
+	<script>
+		// JavaScript 코드
+		document.addEventListener('DOMContentLoaded',() => {
+		  // 모든 input 요소를 선택
+		  var inputs = document.querySelectorAll('input.nemo');
+	
+		  // 각 input 요소에 클릭 이벤트 추가
+		  inputs.forEach((input) => {
+		    input.addEventListener('click', ()=> {
+		      // 해당 input 요소의 부모 폼을 찾음
+		      var form = input.closest('form');
+		      
+		      // 부모 폼 안에 있는 버튼을 찾음
+		      var button = form.querySelector('button[type="submit"]');
+		      
+		      // 찾은 버튼을 클릭하여 폼을 제출
+		      button.click();
+		    });
+		  });
+		});
+
+	</script>
 </body>
-</html>
+</html> 

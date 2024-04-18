@@ -19,4 +19,5 @@ public interface NemoDao {
 	public String findByRow_id(NemoVO vo);
 	public Integer findByRow_num(NemoVO vo);
 	public Integer findByRow_row_num(NemoVO vo);
+
 }
