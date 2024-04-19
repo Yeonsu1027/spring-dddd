@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="rootPath" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>네모네모 드로잉</title>
 <style>
 div.row {
 	display : flex;
@@ -24,6 +25,11 @@ div.row {
 .nemo:checked {
     background-color: black;
 }
+.nemo:hover {
+  cursor: pointer;
+  background-color: #ccc;
+  opacity: 0.7;
+}
 
 .hidden {
     display: none;
@@ -31,20 +37,29 @@ div.row {
 .alist {
     display: none;
 }
+.complete {
+  border-radius: 15px;
+  border: none;
+  background-color: rgb(116, 176, 229);
+  color: white;
+  font-weight: 700;
+  width: 200px;
+  padding: 10px;
+  margin-top: 20px;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+}
+
+.complete:hover {
+  cursor: pointer;
+  opacity: 0.7;
+}
 
 </style>
 </head>
 <body>
 	<h1>1: 웃는얼굴</h1>
-	<c:forEach var="item" items="${answer}">
-		<div class="alist">
-		    <p>${item.n_block1}</p>
-		    <p>${item.n_block2}</p>
-		    <p>${item.n_block3}</p>
-		    <p>${item.n_block4}</p>
-		    <p>${item.n_block5}</p>
-		</div>
-	</c:forEach>
 	<form action="/hello/" method="post">
 	    <div class="row row1">
 	        <input class="nemo" type="checkbox" name="p_block1" id="1" value="1"/>
@@ -105,26 +120,41 @@ div.row {
 	        <button class="hidden" type="submit">저장</button>
 		   </div>
 	</form>
-	<button class="">다그렸다!</button>
+	<a class="complete" href="${rootPath}/correct_check/1/5?p_num=1&row=5">다그렸다!</a>
+	<c:if test="${not empty wrongMessage}">
+        <div>${wrongMessage}</div>
+    </c:if>
+    <!-- 정답 알림 -->
+    <c:if test="${not empty clearMessage}">
+        <div>${clearMessage}</div>
+    </c:if>
 	<script>
-		// JavaScript 코드
 		document.addEventListener('DOMContentLoaded',() => {
-		  // 모든 input 요소를 선택
-		  var inputs = document.querySelectorAll('input.nemo');
+
+		  const inputs = document.querySelectorAll('input.nemo');
 	
-		  // 각 input 요소에 클릭 이벤트 추가
+
 		  inputs.forEach((input) => {
 		    input.addEventListener('click', ()=> {
-		      // 해당 input 요소의 부모 폼을 찾음
-		      var form = input.closest('form');
+
+		    	const form = input.closest('form');
 		      
-		      // 부모 폼 안에 있는 버튼을 찾음
-		      var button = form.querySelector('button[type="submit"]');
+
+		    	const button = form.querySelector('button[type="submit"]');
 		      
-		      // 찾은 버튼을 클릭하여 폼을 제출
+
 		      button.click();
 		    });
 		  });
+		  
+		 /*  const complete_btn = document.querySelector("button.complete")
+		  
+		  complete_btn.addEventListener('click', ()=> {
+			  
+		  } */
+		  
+		  
+		  
 		});
 
 	</script>
