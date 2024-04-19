@@ -70,7 +70,7 @@ div.row {
 	        <input class="hidden" name="p_num" value="1"/>
 	        <input class="hidden" name="p_row_num" value="1"/>
 	        <button class="hidden" type="submit">저장</button>
-		   </div>
+	    </div>
 	</form>
 	<form action="/hello/" method="post">
 	    <div class="row row1">

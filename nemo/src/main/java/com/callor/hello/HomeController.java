@@ -17,7 +17,7 @@ import com.callor.hello.model.NemoVO;
 
 import lombok.extern.slf4j.Slf4j;
 
-@Slf4j
+
 @Controller
 public class HomeController {
 
@@ -68,6 +68,20 @@ public class HomeController {
 			}
 			// 다시 생성안되게
 		} // 자동생성 if문 end -------------------------------------------
+
+		// =================================================================
+		// ====== 화면에 데이터정보에따라 체크된 화면 불러오기 ============
+		// 자동생성 끝나면 이제 화면에 플레이 정보 불러와서 체크되게끔
+		// 5개의 행을 전부다 추가
+		
+		// 조회한 데이터가 1이면 class 를 추가해서 똑같이 검게 칠하고 체크되어
+		// 보이는 것처럼!!!
+	
+		nemoVO.setP_row_num(1); // id랑 그림번호는 고정이니까 두고
+
+		    NemoVO row1Data =  nemoDao.findByRow(nemoVO);
+		    model.addAttribute("row1Data", row1Data);
+		 // ================================================================= 
 
 
 		return "home";
@@ -177,22 +191,10 @@ public class HomeController {
 
 		// 입력한 데이터 바로바로 불러와지기 (칸 칠해져있게)
 
-		/*
-		 * 행 데이터를 전부 불러오고, 마찬가지로 플레이어 게임정보 데이터도 전부 불러와서 findByRow로 한줄씩 다 가져와서 비교 각각의
-		 * 행데이터(block 의 값)을 비교해서 .. 점수변수를 하나 선언하고.. 다른게 있으면 ++ 해서 스테이지 점수 별같은거 조정
-		 * 
-		 * 다 맞췄으면 클리어 테이블에 데이터 생성 c_id, c_level, c_clear (유저아이디,그림번호,클리어(1))
-		 * 
-		 * 
-		 */
-
 		// 나중에 메인화면(스테이지 선택창)에서 이 클리어테이블 정보를 불러와서 없으면 ?같은 그림으로 보이게하고
 		// 클리어를 한 스테이지 이면 완성된 도트 이미지 보여주기
 
-//		log.debug(nemoVO.toString());
-//		log.debug("{}",rowcheck);
-//		log.debug("block1: {}, block2: {}, block3: {}, block4: {}, block5: {}", block1, block2, block3, block4, block5);
-
+		
 		return "redirect:/";
 	}
 	
