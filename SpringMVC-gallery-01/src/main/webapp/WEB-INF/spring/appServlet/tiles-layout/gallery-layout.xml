@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+  "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+  "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<!-- user/join 로 요청을 받은 join.jsp -->
+<tiles-definitions>
+	<definition name="gallery/*" extends="default">
+	
+		<put-attribute name="content"
+			value="/WEB-INF/views/gallery/{1}.jsp" cascade="true" />
+	</definition>
+
+
+</tiles-definitions>

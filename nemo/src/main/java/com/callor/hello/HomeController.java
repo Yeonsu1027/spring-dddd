@@ -46,7 +46,7 @@ public class HomeController {
 		String userid = "USER1";
 		nemoVO.setP_id(userid); // 임시적용 아이디
 		nemoVO.setP_num(1); // 나중에 그림번호 변수 만들어서 1자리에 집어넣기
-		nemoVO.setP_row_num(1);
+		nemoVO.setP_row_num(1); // 이건 row 범위만 해당하면 상관x
 
 		// 그림번호로 조회하는거니 이게 있으면.. 플레이를 한적있는거
 		Integer numcheck = nemoDao.findByRow_num(nemoVO);
@@ -62,8 +62,8 @@ public class HomeController {
 			nemoVO.setP_block4(0);
 			nemoVO.setP_block5(0); // 모든 스테이지를 다 만들게 아니면 반복문으로...해야할듯
 
-			for (int i = 0; i < row; i++) {
-				nemoVO.setP_row_num(i + 1); // 현재는 총5개
+			for (int i = 1; i <= row; i++) {
+				nemoVO.setP_row_num(i); // 현재는 총5개
 				nemoDao.insert(nemoVO);
 			}
 			// 다시 생성안되게
@@ -77,10 +77,14 @@ public class HomeController {
 		// 조회한 데이터가 1이면 class 를 추가해서 똑같이 검게 칠하고 체크되어
 		// 보이는 것처럼!!!
 	
-		nemoVO.setP_row_num(1); // id랑 그림번호는 고정이니까 두고
+		// id랑 그림번호는 고정이니까 두고 row만 바꿔서
+		// 5줄의 플레이어 정보를 jsp에 보내서 화면에보여주기
+		for (int i = 1; i <= row; i++) {
+		    nemoVO.setP_row_num(i); 
+		    NemoVO rowData = nemoDao.findByRow(nemoVO);
+		    model.addAttribute("row" + i + "Data", rowData);
+		}
 
-		    NemoVO row1Data =  nemoDao.findByRow(nemoVO);
-		    model.addAttribute("row1Data", row1Data);
 		 // ================================================================= 
 
 
@@ -198,7 +202,7 @@ public class HomeController {
 		return "redirect:/";
 	}
 	
-	// 정답비교 
+	// 정답비교 다그렸다 주소
 	// 그림번호/행번호 row는 게임하는곳에서 행 개수 변수
 	@RequestMapping(value="/correct_check/{p_num}/{row}", method=RequestMethod.GET)
 	public String correct_check (Model model, NemoVO nemoVO, ANemoVO anemoVO, ClearVO clearVO,
@@ -245,16 +249,45 @@ public class HomeController {
 	        model.addAttribute("wrongMessage", wrong_count + "개 틀렸어요!");
 	    } else {
 	        model.addAttribute("clearMessage", "완성했어!!");
-	        // 클리어정보 테이블에 데이터 생성 
+	        // 클리어정보 테이블에 클리어기록 추가
 	        clearVO.setC_id(userid);
 	        clearVO.setC_level(picture_num);
-	        clearVO.setC_clear(1);
+	        clearVO.setC_clear(1); // 이거 빼도 될듯
 	        clearDao.insert(clearVO);
 	    }
 		
 		
 		
-		return "home"; // 검사하고 다시게임화면으로
+		return "home"; // 검사하고 다시게임화면으로 : 이래야 메시지보임
+	}
+	
+	
+	// 지우개버튼 : 지우는 주소
+	@RequestMapping(value="/reset/{p_num}/{row}", method=RequestMethod.GET)
+	public String reset (Model model, NemoVO nemoVO,
+			@RequestParam(value = "p_num", required = false) Integer picture_num,
+			@RequestParam(value = "row", required = false) Integer row_num
+			) { 
+		String userid = "USER1";
+		nemoVO.setP_id(userid);
+		nemoVO.setP_num(picture_num);
+		
+		// 초기화해야하니까 block 전부 0으로 저장
+		
+		nemoVO.setP_block1(0);
+		nemoVO.setP_block2(0);
+		nemoVO.setP_block3(0);
+		nemoVO.setP_block4(0);
+		nemoVO.setP_block5(0); 
+
+		for (int i = 1; i <= row_num; i++) {
+			nemoVO.setP_row_num(i); 
+			nemoDao.update(nemoVO);
+		}
+		
+		
+		return "home"; // 지우고 다시 보내기
+		
 	}
 	
 }

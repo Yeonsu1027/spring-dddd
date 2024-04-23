@@ -7,6 +7,10 @@
 <meta charset="UTF-8">
 <title>네모네모 드로잉</title>
 <style>
+div.view {
+    display: flex;
+}
+
 div.row {
 	display : flex;
 }
@@ -15,16 +19,20 @@ div.row {
     height: 60px;
     border: 1px solid black;
     cursor: pointer;
-  	margin: -1px;
+  	margin: 1px;
     -webkit-appearance: none; 
     -moz-appearance: none;
     appearance: none;
 }
 
-/* 체크 박스가 체크되었을 때의 스타일 */
-.nemo:checked {
-    background-color: black;
+.p_data_1 {
+background-color: black;
 }
+
+/* 체크 박스가 체크되었을 때의 스타일 */
+/* .nemo:checked {
+    background-color: black;
+} */
 .nemo:hover {
   cursor: pointer;
   background-color: #ccc;
@@ -56,73 +64,96 @@ div.row {
   opacity: 0.7;
 }
 
+
+.eraser{
+    transition: 0.6s;
+}
+.eraser:hover{
+opacity: 0.5;
+cursor: pointer;
+}
+
+.game_menu {
+    border: 3px solid black;
+    border-radius: 10px;
+    margin-left : 20px
+}
+
 </style>
 </head>
 <body>
-	<h1>1: 웃는얼굴</h1>
-	<form action="/hello/" method="post">
-	    <div class="row row1">
-	        <input class="nemo" type="checkbox" name="p_block1" id="1" value="1"/>
-	        <input class="nemo" type="checkbox" name="p_block2" id="2" value="1"/>
-	        <input class="nemo" type="checkbox" name="p_block3" id="3" value="1"/>
-	        <input class="nemo" type="checkbox" name="p_block4" id="4" value="1"/>
-	        <input class="nemo" type="checkbox" name="p_block5" id="5" value="1"/>
-	        <input class="hidden" name="p_num" value="1"/>
-	        <input class="hidden" name="p_row_num" value="1"/>
-	        <button class="hidden" type="submit">저장</button>
-	    </div>
-	</form>
-	<form action="/hello/" method="post">
-	    <div class="row row1">
-	        <input class="nemo" type="checkbox" name="p_block1" id="1" value="1"/>
-	        <input class="nemo" type="checkbox" name="p_block2" id="2" value="1"/>
-	        <input class="nemo" type="checkbox" name="p_block3" id="3" value="1"/>
-	        <input class="nemo" type="checkbox" name="p_block4" id="4" value="1"/>
-	        <input class="nemo" type="checkbox" name="p_block5" id="5" value="1"/>
-	        <input class="hidden" name="p_num" value="1"/>
-	        <input class="hidden" name="p_row_num" value="2"/>
-	        <button class="hidden" type="submit">저장</button>
-		   </div>
-	</form>
-	<form action="/hello/" method="post">
-	    <div class="row row1">
-	        <input class="nemo" type="checkbox" name="p_block1" id="1" value="1"/>
-	        <input class="nemo" type="checkbox" name="p_block2" id="2" value="1"/>
-	        <input class="nemo" type="checkbox" name="p_block3" id="3" value="1"/>
-	        <input class="nemo" type="checkbox" name="p_block4" id="4" value="1"/>
-	        <input class="nemo" type="checkbox" name="p_block5" id="5" value="1"/>
-	        <input class="hidden" name="p_num" value="1"/>
-	        <input class="hidden" name="p_row_num" value="3"/>
-	        <button class="hidden" type="submit">저장</button>
-		   </div>
-	</form>
-	<form action="/hello/" method="post">
-	    <div class="row row1">
-	        <input class="nemo" type="checkbox" name="p_block1" id="1" value="1"/>
-	        <input class="nemo" type="checkbox" name="p_block2" id="2" value="1"/>
-	        <input class="nemo" type="checkbox" name="p_block3" id="3" value="1"/>
-	        <input class="nemo" type="checkbox" name="p_block4" id="4" value="1"/>
-	        <input class="nemo" type="checkbox" name="p_block5" id="5" value="1"/>
-	        <input class="hidden" name="p_num" value="1"/>
-	        <input class="hidden" name="p_row_num" value="4"/>
-	        <button class="hidden" type="submit">저장</button>
-		   </div>
-	</form>
-	<form action="/hello/" method="post">
-	    <div class="row row1">
-	        <input class="nemo" type="checkbox" name="p_block1" id="1" value="1"/>
-	        <input class="nemo" type="checkbox" name="p_block2" id="2" value="1"/>
-	        <input class="nemo" type="checkbox" name="p_block3" id="3" value="1"/>
-	        <input class="nemo" type="checkbox" name="p_block4" id="4" value="1"/>
-	        <input class="nemo" type="checkbox" name="p_block5" id="5" value="1"/>
-	        <input class="hidden" name="p_num" value="1"/>
-	        <input class="hidden" name="p_row_num" value="5"/>
-	        <button class="hidden" type="submit">저장</button>
-		   </div>
-	</form>
+	<h1>Lv.1 웃는얼굴</h1>
+	<div class="view">
+		<div class="game">
+			<form action="/hello/" method="post">
+				<div class="row row1">
+				    <input class="nemo ${row1Data.p_block1 == 1 ? 'p_data_1' : ''}" type="checkbox" name="p_block1"  value="1"/>
+				    <input class="nemo ${row1Data.p_block2 == 1 ? 'p_data_1' : ''}" type="checkbox" name="p_block2"  value="1"/>
+				    <input class="nemo ${row1Data.p_block3 == 1 ? 'p_data_1' : ''}" type="checkbox" name="p_block3" value="1"/>
+				    <input class="nemo ${row1Data.p_block4 == 1 ? 'p_data_1' : ''}" type="checkbox" name="p_block4"  value="1"/>
+				    <input class="nemo ${row1Data.p_block5 == 1 ? 'p_data_1' : ''}" type="checkbox" name="p_block5"  value="1"/>
+				    <input class="hidden" name="p_num" value="1"/>
+				    <input class="hidden" name="p_row_num" value="1"/>
+				    <button class="hidden" type="submit">저장</button>
+				</div>
+			</form>
+			<form action="/hello/" method="post">
+			    <div class="row row2">
+				    <input class="nemo ${row2Data.p_block1 == 1 ? 'p_data_1' : ''}" type="checkbox" name="p_block1"  value="1"/>
+				    <input class="nemo ${row2Data.p_block2 == 1 ? 'p_data_1' : ''}" type="checkbox" name="p_block2"  value="1"/>
+				    <input class="nemo ${row2Data.p_block3 == 1 ? 'p_data_1' : ''}" type="checkbox" name="p_block3" value="1"/>
+				    <input class="nemo ${row2Data.p_block4 == 1 ? 'p_data_1' : ''}" type="checkbox" name="p_block4"  value="1"/>
+				    <input class="nemo ${row2Data.p_block5 == 1 ? 'p_data_1' : ''}" type="checkbox" name="p_block5"  value="1"/>
+				    <input class="hidden" name="p_num" value="1"/>
+				    <input class="hidden" name="p_row_num" value="2"/>
+				    <button class="hidden" type="submit">저장</button>
+				 </div>
+			</form>
+			<form action="/hello/" method="post">
+			    <div class="row row3">
+				    <input class="nemo ${row3Data.p_block1 == 1 ? 'p_data_1' : ''}" type="checkbox" name="p_block1"  value="1"/>
+				    <input class="nemo ${row3Data.p_block2 == 1 ? 'p_data_1' : ''}" type="checkbox" name="p_block2"  value="1"/>
+				    <input class="nemo ${row3Data.p_block3 == 1 ? 'p_data_1' : ''}" type="checkbox" name="p_block3" value="1"/>
+				    <input class="nemo ${row3Data.p_block4 == 1 ? 'p_data_1' : ''}" type="checkbox" name="p_block4"  value="1"/>
+				    <input class="nemo ${row3Data.p_block5 == 1 ? 'p_data_1' : ''}" type="checkbox" name="p_block5"  value="1"/>
+				    <input class="hidden" name="p_num" value="1"/>
+				    <input class="hidden" name="p_row_num" value="3"/>
+				    <button class="hidden" type="submit">저장</button>
+				  </div>
+			</form>
+			<form action="/hello/" method="post">
+			    <div class="row row4">
+				    <input class="nemo ${row4Data.p_block1 == 1 ? 'p_data_1' : ''}" type="checkbox" name="p_block1"  value="1"/>
+				    <input class="nemo ${row4Data.p_block2 == 1 ? 'p_data_1' : ''}" type="checkbox" name="p_block2"  value="1"/>
+				    <input class="nemo ${row4Data.p_block3 == 1 ? 'p_data_1' : ''}" type="checkbox" name="p_block3" value="1"/>
+				    <input class="nemo ${row4Data.p_block4 == 1 ? 'p_data_1' : ''}" type="checkbox" name="p_block4"  value="1"/>
+				    <input class="nemo ${row4Data.p_block5 == 1 ? 'p_data_1' : ''}" type="checkbox" name="p_block5"  value="1"/>
+				    <input class="hidden" name="p_num" value="1"/>
+				    <input class="hidden" name="p_row_num" value="4"/>
+				    <button class="hidden" type="submit">저장</button>
+				  </div>
+			</form>
+			<form action="/hello/" method="post">
+			    <div class="row row5">
+				    <input class="nemo ${row5Data.p_block1 == 1 ? 'p_data_1' : ''}" type="checkbox" name="p_block1"  value="1"/>
+				    <input class="nemo ${row5Data.p_block2 == 1 ? 'p_data_1' : ''}" type="checkbox" name="p_block2"  value="1"/>
+				    <input class="nemo ${row5Data.p_block3 == 1 ? 'p_data_1' : ''}" type="checkbox" name="p_block3" value="1"/>
+				    <input class="nemo ${row5Data.p_block4 == 1 ? 'p_data_1' : ''}" type="checkbox" name="p_block4"  value="1"/>
+				    <input class="nemo ${row5Data.p_block5 == 1 ? 'p_data_1' : ''}" type="checkbox" name="p_block5"  value="1"/>
+				    <input class="hidden" name="p_num" value="1"/>
+				    <input class="hidden" name="p_row_num" value="5"/>
+				    <button class="hidden" type="submit">저장</button>
+				 </div>
+			</form>
+		</div>
+		<section class="game_menu">
+			<a href="${rootPath}/reset/1/5?p_num=1&row=5"><img class="eraser" src="${rootPath}/static/images/eraser.png" width="100px"/></a>
+		</section>
+	</div>
 	<a class="complete" href="${rootPath}/correct_check/1/5?p_num=1&row=5">다그렸다!</a>
 	<c:if test="${not empty wrongMessage}">
         <div>${wrongMessage}</div>
+        <a class="complete" href="${rootPath}/">되돌아가기</a>
     </c:if>
     <!-- 정답 알림 -->
     <c:if test="${not empty clearMessage}">
