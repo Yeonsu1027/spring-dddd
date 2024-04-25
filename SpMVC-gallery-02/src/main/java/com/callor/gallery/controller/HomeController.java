@@ -1,4 +1,4 @@
-package com.callor.gallery;
+package com.callor.gallery.controller;
 
 import java.util.List;
 import java.util.Locale;
@@ -31,12 +31,10 @@ public class HomeController {
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
 		
-	
-		
 		model.addAttribute("NAME","나는 이몽룡입니다");
 		List<GalleryVO> gList = galleryDao.selectAll();
 		model.addAttribute("GALLERYS",gList);
-		return "home";
+		return "gallery/list";
 	}
 	
 }

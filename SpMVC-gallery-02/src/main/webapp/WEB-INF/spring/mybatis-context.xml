@@ -16,7 +16,7 @@
 		<property name="username" value="root" />
 		<property name="password" value="!Biz8080" />
 		<property name="url"
-			value="jdbc:mysql://localhost:3306/gallerydb" />
+			value="jdbc:mysql://localhost:3306/gallerydb2" />
 	</bean>
 	<!-- sqlSessionfactory : MyBatis 를 사용하여 JavaCode 와 dataSource 를 연결하는 방법 -->
 
