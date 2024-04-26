@@ -1,0 +1,245 @@
+@charset "UTF-8";
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  height: 100vh;
+}
+body {
+  height: 100%;
+}
+body.HM-main_container {
+  margin: 0 10px;
+  /* border-left: 1px solid black;
+  border-right: 1px solid black; */
+  display: flex;
+  flex-direction: column;
+}
+.HM-main_body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+/* 스케치
+.HM-main_sketch {
+  display: flex;
+  div {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 1px solid white;
+    margin-left: auto;
+  }
+} */
+
+.HM-main_hover_box {
+  margin-left: auto;
+  width: 30px;
+  height: 30px;
+  border-top: 40px solid #ddd;
+  border-right: 60px solid rgba(0, 0, 0, 0);
+  transition: 2s;
+}
+.HM-main_hover_box:hover {
+  border-top: 80px solid gray;
+  border-top-left-radius: 10%;
+  border-top-right-radius: 10%;
+  border-bottom-left-radius: 10%;
+  border-right: 120px solid rgba(0, 0, 0, 0);
+  cursor: pointer;
+}
+
+.HM-main_nav {
+  display: none;
+  /* visibility: visible; */
+  ul {
+    flex: 1;
+    list-style: none;
+    display: flex;
+    border: 1px solid #ddd;
+    transition: 1s;
+    li {
+      flex: 1;
+      height: 40px;
+      background-color: black;
+      color: white;
+      text-align: center;
+    }
+  }
+}
+.HM-main_nav li:hover {
+  background-color: white;
+  color: black;
+  cursor: pointer;
+}
+
+/* 
+이미지 파일
+*/
+.HM-image_header {
+}
+.HM-main_header {
+  padding: 2rem;
+  background-image: url("../images/sketch.jpg");
+}
+
+/* 
+홈화면
+*/
+
+.HM-home_container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.HM-home_top {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.HM-home_top > div {
+  flex: 1;
+  border: 1px solid black;
+  display: flex;
+  label {
+    font-size: larger;
+    font-weight: 900;
+  }
+}
+.HM-home_picture {
+  /* border: 1px solid #ddd; */
+  flex: 3;
+  height: 100%;
+}
+.HM-home_diary {
+  flex: 2;
+  height: 50%;
+}
+.HM-home_first_menu {
+  display: flex;
+  align-items: center;
+  div:nth-of-type(3) {
+    flex: 1;
+  }
+  img {
+    width: 50px;
+  }
+  label {
+    span {
+      margin-left: auto;
+    }
+  }
+}
+.HM-home_second_menu {
+  display: flex;
+  align-items: center;
+}
+.HM-home_cal {
+  display: flex;
+  gap: 1rem;
+}
+
+.HM-home_picture {
+  display: flex;
+  & > div {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    div {
+      flex: 1;
+      border: 1px solid black;
+    }
+  }
+}
+.HM-home_diary {
+  border: 5px dotted rgb(222, 65, 65);
+}
+
+/*이미지*/
+.HM-home_img {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+.HM-home_weather {
+  flex: 0.3;
+}
+
+/* ------------------------ 추가 */
+.HM-home_diary {
+  border: 5px dotted rgb(222, 65, 65);
+  border-bottom: none;
+}
+
+.HM-home_picture {
+  width: 500px;
+  height: 500px;
+  margin: 0 auto 15px auto;
+}
+.h1h1h1 {
+  color: rgb(98, 58, 109);
+}
+
+div.YS_p_div {
+  width: 100%;
+
+  margin: auto;
+}
+
+img.YS_picture {
+  width: 100%;
+  height: 100%;
+  transition: 0.3s;
+  &:hover {
+    cursor: pointer;
+    opacity: 0.6;
+    /* background-color: #efefef; */
+  }
+}
+img.YS_picture_c {
+  width: 100%;
+  height: 100%;
+}
+
+.HM-home_diary {
+  height: 250px;
+}
+
+h2.YS_diary_row {
+  font-weight: 700;
+  /* text-align: center; */
+  margin-left: 15px;
+  margin-right: 15px;
+  border-bottom: 5px dotted rgb(222, 65, 65);
+}
+/* 비어있는 일기 줄 */
+h2.YS_diary_row_n {
+  /* height: 1 rem; */
+  margin-left: 15px;
+  margin-right: 15px;
+  border-bottom: 5px dotted rgb(222, 65, 65);
+}
+
+/* 다음단계 깜빡여서 클릭할 위치알려주기 */
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+/* 나중에 게임으로 이동할때도 class가 .next_level 이면 바로넘어가고
+다른거 누르면 이미 클리어한 라운드 입니다 다시하시겠습니까? 알림창뜨게 다시하면 리셋주소보냈다가 겜화면으로
+클리어 기록은 그대로
+*/
+.next_level {
+  background-color: rgb(255, 176, 176);
+  animation: blink 1s infinite; /* 1초 간격으로 무한 반복 */
+}
