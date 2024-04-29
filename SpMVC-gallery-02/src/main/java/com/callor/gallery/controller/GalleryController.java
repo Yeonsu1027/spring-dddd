@@ -60,8 +60,8 @@ public class GalleryController {
 	public String insert(GalleryVO galleryVO, 
 			@RequestParam("image_file")
 		MultipartFile image_file,
-		MultipartHttpServletRequest image_files, 
 		
+		MultipartHttpServletRequest image_files, // @RequestParam 붙임 안됨.
 		Model model) { 
 		
 		log.debug("파일 업로드 {}", image_file.getOriginalFilename()); // image_file 객체에 들어있는 함수  getOriginalFilename()
@@ -78,6 +78,8 @@ public class GalleryController {
 		 * Multi 파일의 경우는 변수.getFiles() method 를 실행할때
 		 * form 에서 설정한 name 속성값을 매개변수로 전달한다
 		 * */
+		
+		// 붙인 이름은 파일을 추출할때사용함
 		if(image_files.getFiles("image_files").size() > 0) { // 멀티이미지가 선택되었으면
 			List<GalleryVO> VOs 
 				= galleryService

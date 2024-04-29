@@ -327,4 +327,16 @@ public class HomeController {
 		
 	}
 	
+//	로그인, 회원가입 만들기~~~
+	
+	@RequestMapping(value="/join",method=RequestMethod.GET)
+	public String join() {
+		return null;
+	}
+	
+	@RequestMapping(value="/login",method=RequestMethod.GET)
+	public String login() {
+		return null;
+	}
+	
 }

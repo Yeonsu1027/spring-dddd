@@ -8,8 +8,18 @@
 	<select id="selectAll">
 		SELECT * FROM tbl_gallerys ORDER BY g_date DESC, g_time DESC
 	</select>
-	<select id="findById"></select>
-	<insert id="insert">
+	
+	<select id="findById">
+		SELECT * FROM tbl_images WHERE g_id = #{g_id}	
+	</select>
+	
+	<insert id="insert" parameterType="GalleryVO">
+		<selectKey 
+		resultType="String" 
+		keyProperty="g_id" 
+		order="AFTER">
+		SELECT LAST_INSERT_ID()
+		</selectKey>
 		INSERT INTO tbl_gallerys (
 			g_id,
 			g_date,

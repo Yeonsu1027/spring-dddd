@@ -11,6 +11,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.callor.gallery.models.ImageVO;
+
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -83,16 +85,23 @@ public class FileUploadServiceImpl implements FileUploadService{
 	}
 
 	@Override
-	public List<String> filesUpload(MultipartHttpServletRequest files) throws Exception {
+	public List<ImageVO> filesUpload(MultipartHttpServletRequest files) throws Exception {
 		
 		// 업로드된 멀티파일을 List type 의 MultipartFile 로 분해하기
+		// 업로드된 멀티파일을 추출하기 위해서 "파일스.fetFiles("이름")" 를 사용하는데
+		// 이름은 form 의 input tag 에 붙여진 이름을 사용한다.
 		List<MultipartFile> result = files.getFiles("image_files");
-		List<String> resultFileNames = new ArrayList<String>();
+		List<ImageVO> resultImages = new ArrayList<>();
 		for(MultipartFile f : result) {
 			String resName = this.fileUpload(f);
-			resultFileNames.add(resName);	
+			resultImages.add(
+					ImageVO.builder()
+					.i_id(UUID.randomUUID().toString()) // 각 칼럼마다 id별도생성
+					.i_origin_image(f.getOriginalFilename())
+					.i_up_image(resName).build()
+				);	
 		}
-		return  resultFileNames;
+		return  resultImages;
 	}
 
 }
