@@ -12,6 +12,7 @@ io_quan INT,
 io_total INT
 );
 
+DESC tbl_iolist;
 
 SELECT * FROM tbl_iolist ORDER BY io_date DESC, io_time ASC ;
 
