@@ -8,9 +8,9 @@
  consloe.log(NAV_INDEX["home"]) 결과는 : {url : "/"}
  */
 const NAV_INDEX = {
-  home: { url: "/" },
-  notice: { url: "/bbs/notice" },
-  free: { url: "/bbs/free" },
+  home: { url: "" },
+  notice: { url: "bbs/notice" },
+  free: { url: "bbs/free" },
 };
 document.addEventListener("DOMContentLoaded", () => {
   const mainNav = document.querySelector("nav.main");

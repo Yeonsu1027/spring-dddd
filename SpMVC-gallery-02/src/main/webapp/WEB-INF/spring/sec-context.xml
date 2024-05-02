@@ -12,17 +12,30 @@
 	
 		<sec:intercept-url pattern="/bbs/free/insert" 
 				access="hasAnyRole('ROLE_USER', 'USER_ADMIN')"/>
+				
 		<sec:intercept-url pattern="/bbs/notice/insert" 
 				access="hasRole('ROLE_ADMIN')"/>
+				
 		<sec:intercept-url pattern="/bbs/**" access="permitAll()"/>
 	
-		<sec:intercept-url pattern="/user/login" access="isAnonymouser()"/>
-		<sec:intercept-url pattern="/user/join" access="isAnonymouser()"/>
+		<sec:intercept-url pattern="/user/login" access="isAnonymous()"/>
+		<sec:intercept-url pattern="/user/join" access="isAnonymous()"/>
 		<sec:intercept-url pattern="/user/mypage" access="isAuthenticated()"/>
 		<sec:intercept-url pattern="/**" access="permitAll()"/>
 	
-		<sec:form-login/>
-		<sec:logout/>
+		<sec:form-login 
+			login-page="/user/login"
+			login-processing-url="/user/login"
+			username-parameter="username"
+			password-parameter="password"
+			authentication-success-forward-url="/"
+		/>
+		<sec:logout
+			invalidate-session="true"
+			delete-cookies="true"
+			logout-success-url="/"
+			logout-url="/user/login"
+		/>
 	</sec:http>
 	
 	<sec:authentication-manager>

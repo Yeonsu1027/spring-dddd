@@ -193,11 +193,6 @@ img.YS_picture {
   width: 100%;
   height: 100%;
   transition: 0.3s;
-  &:hover {
-    cursor: pointer;
-    opacity: 0.6;
-    /* background-color: #efefef; */
-  }
 }
 img.YS_picture_c {
   width: 100%;
@@ -207,19 +202,35 @@ img.YS_picture_c {
 .HM-home_diary {
   height: 250px;
 }
+/* 
+h2.YS_diary_row {
+  font-weight: 700;
+
+  margin-left: 15px;
+  margin-right: 15px;
+  border-bottom: 5px dotted rgb(222, 65, 65);
+}
+
+h2.YS_diary_row_n {
+
+  margin-left: 15px;
+  margin-right: 15px;
+  border-bottom: 5px dotted rgb(222, 65, 65);
+} */
 
 h2.YS_diary_row {
   font-weight: 700;
   /* text-align: center; */
   margin-left: 15px;
   margin-right: 15px;
-  border-bottom: 5px dotted rgb(222, 65, 65);
 }
 /* 비어있는 일기 줄 */
 h2.YS_diary_row_n {
   /* height: 1 rem; */
   margin-left: 15px;
   margin-right: 15px;
+}
+section.YS_border-bottom {
   border-bottom: 5px dotted rgb(222, 65, 65);
 }
 
@@ -242,4 +253,100 @@ h2.YS_diary_row_n {
 .next_level {
   background-color: rgb(255, 176, 176);
   animation: blink 1s infinite; /* 1초 간격으로 무한 반복 */
+  &:hover {
+    cursor: pointer;
+    opacity: 0.6;
+    /* background-color: #efefef; */
+  }
+}
+
+/* 완성하면 완성한단계에서 나타나기 */
+.fade-in {
+  opacity: 0; /* 초기에 투명도를 0으로 설정 */
+  animation: fadeInAnimation 1s ease-in forwards; /* 1초 동안 서서히 나타나는 애니메이션 적용 */
+}
+
+@keyframes fadeInAnimation {
+  from {
+    opacity: 0; /* 시작 시 투명도 0 */
+  }
+  to {
+    opacity: 1; /* 끝나는 시점에 투명도 1로 설정하여 나타나는 효과 */
+  }
+}
+
+/* --------------------- */
+.crayon {
+  position: relative;
+  width: 80px;
+  animation: crayonAnimation 1s infinite alternate; /* 애니메이션 지속 시간을 1초로 수정 */
+}
+
+@keyframes crayonAnimation {
+  0% {
+    top: 0;
+    left: 0;
+  }
+  25% {
+    top: 5px; /* 움직임을 조금 더 빠르게 만들기 위해 이동 거리를 줄임 */
+    left: 5px;
+  }
+  50% {
+    top: 10px; /* 이동 거리를 줄여서 움직임이 빨라지도록 함 */
+    left: 10px;
+  }
+  75% {
+    top: 15px; /* 움직임을 조금 더 빠르게 만들기 위해 이동 거리를 줄임 */
+    left: 15px;
+  }
+  100% {
+    top: 20px;
+    left: 20px;
+  }
+}
+
+/* 일기내용 나타나기 */
+.fade-in2 {
+  animation: fadeInRight 0.5s ease-out;
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+/* --- */
+div.HM-home_picture {
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+/* 5단계용 */
+.hidden {
+  display: none;
+}
+
+/* 4단계까지 클리어하고나서 뜰 ! 그림 */
+section.ex-mark {
+  margin-left: -7px;
+  border-left: 10px solid white;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+/* 이클래스를 누르면... */
+.next_level5 {
+  /* background-color: rgb(255, 176, 176); */
+  animation: blink 1s infinite; /* 1초 간격으로 무한 반복 */
+  &:hover {
+    cursor: pointer;
+    opacity: 0.6;
+    /* background-color: #efefef; */
+  }
 }

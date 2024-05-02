@@ -9,9 +9,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>네모네모 드로잉</title>
-<link rel="stylesheet" href="${rootPath}/static/css/main.css?2024-04-26-002">
+<link rel="stylesheet" href="${rootPath}/static/css/main.css?2024-04-30-005">
 
 <script src="${rootPath}/static/js/main.js?2024-04-19-001"></script>
+<script src="${rootPath}/static/js/mane.js?2024-04-30-002"></script>
 
 <script>
 	const rootPath = "${rootPath}"

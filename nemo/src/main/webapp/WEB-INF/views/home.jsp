@@ -83,6 +83,7 @@ cursor: pointer;
 </head>
 <body>
 	<h1>Lv.1 웃는얼굴</h1>
+	<img src="${rootPath}/static/images/crayon.png" alt="crayon" width="80px" class="crayon">
 	<div class="view">
 		<div class="game">
 			<form action="/hello/" method="post">

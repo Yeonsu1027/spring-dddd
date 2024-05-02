@@ -3,12 +3,15 @@
   lang="ko"
   xmlns:th="http://www.thymeleaf.org"
   xmlns:layout="http://ultrag.net.nz/thymeleaf/layout"
+  xmlns:sec="http://thymeleaf.org/extras/spring-security"
   layout:decorate="~{/bbs/home}"
 >
   <section class="bbs container">
     <aside class="bbs-left-side" layout:fragment="bbs-left-side">
-      <a href="#">중요공지보기</a>
-      <a href="#">전체공지 보기</a>
+      <a th:href="@{/bbs/notice/top}">중요공지보기</a>
+      <a th:href="@{/bbs/notice}">전체공지 보기</a>
+      <a th:href="@{/bbs/notice/insert}" 
+      			sec:authorize="hasRole('RONE_ADMIN')">공지사항 작성</a>
     </aside>
     <aside class="bbs-right-side" layout:fragment="bbs-right-side">
       공지사항 리스트
