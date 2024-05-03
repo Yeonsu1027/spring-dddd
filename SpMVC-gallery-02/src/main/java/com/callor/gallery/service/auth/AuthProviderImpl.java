@@ -19,6 +19,9 @@ import com.callor.gallery.dao.UserDao;
 import com.callor.gallery.models.RoleVO;
 import com.callor.gallery.models.UserVO;
 
+import groovy.util.logging.Slf4j;
+
+@Slf4j
 @Service("authProviderImpl")
 public class AuthProviderImpl implements AuthenticationProvider{
 
@@ -36,9 +39,10 @@ public class AuthProviderImpl implements AuthenticationProvider{
 	
 		String username = authentication.getName();
 		String password = authentication.getCredentials().toString();
+		//log.debug("USENAME {}, PASSWORD {}",username, password);
 		
 		if(username == null || username.isBlank()) {
-			throw new UsernameNotFoundException("사용자이름 확인");
+			throw new UsernameNotFoundException("사용자이름을 입력하세요");
 		}
 		
 		UserVO userVO = userDao.findById(username);
@@ -48,7 +52,7 @@ public class AuthProviderImpl implements AuthenticationProvider{
 		}
 		
 		if(password == null || password.isBlank() ) {
-			throw new BadCredentialsException("비밀번호 확인");
+			throw new BadCredentialsException("비밀번호를 입력하세요");
 		}
 		
 		if(!passwordEncoder.matches(password, userVO.getPassword())) {

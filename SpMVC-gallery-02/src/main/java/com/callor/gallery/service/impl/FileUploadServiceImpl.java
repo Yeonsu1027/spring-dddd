@@ -71,6 +71,7 @@ public class FileUploadServiceImpl implements FileUploadService{
 		 * */
 		String uuid = UUID.randomUUID().toString();
 		String upLoadFileName = String.format("%s-%s", uuid,originalFileName);
+		// (랜덤생성uuid(진짜파일이름))
 		
 		// 폴더이름 + 파일이름 을 결합하여 업로드할 파일 정보를 생성하여
 		// upLoadFile 객체에 저장

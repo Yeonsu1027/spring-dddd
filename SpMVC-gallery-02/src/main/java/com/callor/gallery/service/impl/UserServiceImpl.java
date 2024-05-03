@@ -58,7 +58,8 @@ public class UserServiceImpl implements UserService{
 	 * 
 	 * */
 	
-	@Transactional
+	
+	@Transactional         // 데이터 무결성 : fk로연결된 테이블이 2개있다 치면 두개다 저장안되면 나머지도 취소
 	@Override
 	public int create_user(UserVO userVO) throws DataAccessException{ // service 인터페이스에도적어야함
 		

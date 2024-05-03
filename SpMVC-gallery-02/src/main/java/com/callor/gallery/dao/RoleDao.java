@@ -13,7 +13,7 @@ public interface RoleDao extends GenericDao<RoleVO, String>{
 			@Param("roles") List<RoleVO> vo,
 			@Param("username") String username);
 	
-	@Select("SELECT * FROME tbl_roles WHERE r_username =#{user}") //1개라 이름안중요
+	@Select("SELECT * FROM tbl_roles WHERE r_username =#{user}") //1개라 이름안중요
 	public List<RoleVO> findByUsername(String username);
 	
 }

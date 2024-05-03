@@ -1,6 +1,9 @@
 package com.callor.gallery.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -34,9 +37,16 @@ public class UserController {
 		
 	}
 	
-	@RequestMapping(value="/login", method=RequestMethod.GET)
-	public String login() {
+	@RequestMapping(value= {"/login","/login/{fail}"}, method=RequestMethod.GET)
+	public String login(
+			@PathVariable(value="fail", required = false) String fail,
+			HttpSession httpSession) {
 		
-		return null;
+		if(fail == null || fail.isBlank()) {
+			httpSession.removeAttribute("SPRING_SECURITY_LAST_EXCEPTION");
+		}
+		return "user/login";
+		
+		
 	}
 }
