@@ -8,7 +8,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<form method="post" enctype="multipart/form-data">
-		<input placeholder="id" name="g_id"/>
+		<input placeholder="id1" name="i_id"/>
+		<input placeholder="id2" name="g_id"/>
 		<input type="email" placeholder="이메일" name="g_email"/>
 		<input placeholder="비밀번호" name="g_password"/>
 		<input type="file" class="file single"
