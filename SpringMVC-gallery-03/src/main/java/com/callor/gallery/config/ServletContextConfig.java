@@ -13,7 +13,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 @Configuration // :xml 코드와 같은역할을 한다
 
 // annotation-driven 를 대신하는 설정
-@EnableWebMvc
+@EnableWebMvc  //  Spring MVC 구성을 활성화하는 데 사용
 
 @ComponentScan(basePackages = {"com.callor.gallery.controller"})
 public class ServletContextConfig implements WebMvcConfigurer{
@@ -26,9 +26,15 @@ public class ServletContextConfig implements WebMvcConfigurer{
 		registry.addResourceHandler("/static/**")
 			.addResourceLocations("/static/");
 		
-		registry.addResourceHandler("/images/**") // 이미지라는 이름으로 접근
-			.addResourceLocations("file:///app/upload/"); //이미지 업로드할 c드라이브
+		registry.addResourceHandler("/css/**")
+		.addResourceLocations("/static/css/"); // css를 요청하면 static의 css로 요청해라
 		
+		registry.addResourceHandler("/js/**")
+		.addResourceLocations("/static/js/");
+		
+		registry.addResourceHandler("/images/**") // 이미지라는 이름으로 접근
+			.addResourceLocations("file:///app/upload/", "/static/images/"); //이미지 업로드할 c드라이브
+									// 여기서 찾고, 없으면 여기서 찾아라
 		WebMvcConfigurer.super.addResourceHandlers(registry);
 	}
 	

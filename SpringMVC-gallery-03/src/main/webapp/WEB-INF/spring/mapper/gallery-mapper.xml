@@ -6,7 +6,7 @@
  <mapper namespace="com.callor.gallery.dao.GalleryDao">
  
  	<select id="selectAll">
- 		SELECT * FROM tbl_mygallery ORDER BY g_date DESCm g_time DESC
+ 		SELECT * FROM tbl_mygallery ORDER BY g_date DESC, g_time DESC
  	</select>
  	<select id="findById">
  		SELECT * FROM tbl_mygallery WHERE g_id = #{g_id}

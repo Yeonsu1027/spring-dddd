@@ -52,7 +52,7 @@ public class MyBatisContextConfig {
 					context.getResources("/WEB-INF/spring/mapper/*-mapper.xml"));
 			
 			// ~~/src/main/resources 폴더의 mapper 폴더에서 xml 을 참조하고 싶을때
-			// context.getResources("classpath:/**/mapper/*-mapper.xml");
+			// context.getResources("classpath:/**/mapper/*-mapper.xml"); // ** : mapper 폴더 여러개에서 사용가능
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
