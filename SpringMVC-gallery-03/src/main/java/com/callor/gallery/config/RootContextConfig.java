@@ -29,5 +29,10 @@ public class RootContextConfig {
 		return resolver;
 		
 	}
+	
+	@Bean(name="ipLoadPath") // FileServiceImplV1 의 private final String upLoadPath;
+	public String upLoadPath() {
+		return "c:/app/upload"; // c드라이브
+	}
 
 }

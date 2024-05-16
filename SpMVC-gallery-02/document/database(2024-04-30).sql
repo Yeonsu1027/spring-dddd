@@ -20,7 +20,11 @@ CREATE TABLE IF NOT EXISTS tbl_roles (
 	REFERENCES tbl_users(username) ON DELETE CASCADE
 	);
 
+DESC tbl_roles;
 DROP TABLE tbl_roles;
 DROP TABLE tbl_users;
 SHOW TABLES;
+
+SELECT * FROM tbl_users;
+SELECT * FROM tbl_roles;
 

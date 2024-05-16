@@ -15,7 +15,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 // annotation-driven 를 대신하는 설정
 @EnableWebMvc  //  Spring MVC 구성을 활성화하는 데 사용
 
-@ComponentScan(basePackages = {"com.callor.gallery.controller"})
+@ComponentScan(basePackages = {"com.callor.gallery.controller", "com.callor.gallery.service"})
 public class ServletContextConfig implements WebMvcConfigurer{
 
 	// resource-mapping 을 대신하는 코드

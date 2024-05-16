@@ -8,7 +8,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 public interface FileService {
 
 	// Singel File Upload
-	public String fileUp(MultipartFile file);
+	public String fileUp(MultipartFile file) throws Exception;
 	
 	// Multi file Upload
 	public List<String> filesUp(MultipartHttpServletRequest files); 
