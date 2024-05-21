@@ -5,9 +5,10 @@
 - 초기 SpringFramework 에서는 모든 데이터 type 을 return 할 수있었으나, 지금은 분리된 프로젝트로 구현되었다.
 
 ## Spring 에서 모든 데이터 type 을 `JSON`, `xml` type 으로 return 하기 
-- dependency 설정하기
+- `jackson-databind` dependency 설정하기
+- `java 의 모든 데이터 Type` 을 `JSON` type 으로 client 로 return 하는 도구
+- `JSON` 외의 `xml`, `yaml` 등 기타 type 이 필요한 경우는 추가로 `jackson-dataformat-*` 등의 도구를 설치하여 사용한다. 
 ```xml
-<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
 <dependency>
     <groupId>com.fasterxml.jackson.core</groupId>
     <artifactId>jackson-databind</artifactId>
